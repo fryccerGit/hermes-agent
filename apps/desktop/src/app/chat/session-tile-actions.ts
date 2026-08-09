@@ -731,8 +731,16 @@ export function useSessionTileActions({ requestGateway, runtimeId, scope, stored
     [update]
   )
 
+  const branchInNewChat = useCallback(
+    (messageId: string) =>
+      sessionTileDelegate()?.branchSessionAtMessage(storedIdRef.current, runtimeIdRef.current, messageId) ??
+      Promise.resolve(false),
+    []
+  )
+
   return useMemo(
     () => ({
+      branchInNewChat,
       cancelRun,
       dismissError,
       editMessage,
@@ -744,6 +752,7 @@ export function useSessionTileActions({ requestGateway, runtimeId, scope, stored
       submitText
     }),
     [
+      branchInNewChat,
       cancelRun,
       dismissError,
       editMessage,
