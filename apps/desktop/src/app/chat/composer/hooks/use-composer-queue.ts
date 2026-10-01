@@ -230,6 +230,7 @@ export function useComposerQueue({
         displayText: frozen.displayText ?? null,
         frozenTransport: frozen.frozenTransport ?? null
       })
+
       triggerHaptic(saved ? 'success' : 'selection')
     } else {
       triggerHaptic('cancel')
